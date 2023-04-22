@@ -8,7 +8,7 @@ const uiConfig = {
   // Popup signin flow rather than redirect flow.
   signInFlow: 'popup', // (!) weird, need this prop to redirect aftere success
   // Redirect to / after sign in  is successful. Alternatively you can provide a callbacks.signInSuccess function.
-  signInSuccessUrl: '/',
+  signInSuccessUrl: '/app/foods',
   // We will display Google and Facebook as auth providers.
   //Source: https://firebase.google.com/docs/reference/js/v8/firebase.auth.GithubAuthProvider#static-provider_id
   signInOptions: [
