@@ -6,7 +6,8 @@
 import {
   HeartIcon,
   ChevronUpIcon,
-  ArrowUpCircleIcon
+  ArrowUpCircleIcon,
+  ArrowDownCircleIcon
 } from '@heroicons/react/24/outline';
 
 import capitalizeFirstLetter from '@/utils/capitalizeFirstLetter';
@@ -88,7 +89,7 @@ export default function FoodFigure({ doc }) {
   });
   // Author: https://tailwindcomponents.com/u/vldmihalache
   return (
-    <div className="flex flex-col justify-center items-center h-[100vh]">
+    <div className="flex flex-col items-center w-1/3 ">
       <div className="!z-5 relative flex flex-col rounded-[20px] max-w-[300px] bg-white bg-clip-border shadow-3xl shadow-shadow-500 w-full !p-4 3xl:p-![18px undefined">
         <div className="h-full w-full">
           <div className="relative w-full">
@@ -129,8 +130,8 @@ export default function FoodFigure({ doc }) {
                 {' '}
                 {capitalizeFirstLetter(doc.data().name)}
               </p>
-              <p className="mt-1 text-sm font-medium text-gray-600 md:mt-2">
-                In:{' '}
+              {/* Source ellipse: http://stackoverflow.com/questions/36652580/ddg#36653821 */}
+              <p className="mt-1 text-sm font-medium text-gray-600 md:mt-2 overflow-hidden text-ellipsis w-24 whitespace-nowrap">
                 {doc
                   .data()
                   .locations.map((w) => capitalizeFirstLetter(w))
@@ -165,23 +166,26 @@ export default function FoodFigure({ doc }) {
             </div>
           </div>
           <div className="flex items-center justify-between md:items-center lg:justify-between ">
-            <div className="flex">
-              <p className="!mb-0 text-sm font-bold text-brand-500">
-                Redundant:{' '}
-                <ArrowUpCircleIcon className="text-white w-5 h-5 inline-block fill-green-600" />
-                <span>180%</span>
-              </p>
-            </div>
-            <button
+            <div className="flex"></div>
+            <p className="!mb-0 text-sm font-bold text-brand-500">
+              Carbon effect:{' '}
+              {+doc.data().carbonSave < 0 ? (
+                <ArrowDownCircleIcon className="text-white w-5 h-5 inline-block fill-green-600" />
+              ) : (
+                <ArrowUpCircleIcon className="text-white w-5 h-5 inline-block fill-red-600 " />
+              )}
+              <span>{doc.data().carbonSave}%</span>
+            </p>
+            {/* <button
               href=""
               className="linear rounded-[20px] bg-brand-900 px-4 py-2 text-base font-medium text-white transition duration-200 hover:bg-brand-800 active:bg-brand-700"
             >
               Place Bid
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
-      <p className="font-normal text-navy-700 mt-20 mx-auto w-max">
+      {/* <p className="font-normal text-navy-700 mt-20 mx-auto">
         Notifications Card component from{' '}
         <a
           href="https://horizon-ui.com?ref=tailwindcomponents.com"
@@ -190,7 +194,7 @@ export default function FoodFigure({ doc }) {
         >
           Horizon UI Tailwind React
         </a>
-      </p>
+      </p> */}
     </div>
   );
 }
