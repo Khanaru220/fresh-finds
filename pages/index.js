@@ -26,7 +26,7 @@ export default function Home() {
         )}
         {!loading && user && (
           <>
-            <h1 className={styles.title}>
+            <h1 className={`${styles.title} text-orange-700`}>
               Welcome to <a href="https://nextjs.org">Next.js!</a>
             </h1>
 
