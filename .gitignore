@@ -37,3 +37,5 @@ next-env.d.ts
 
 # firebase emulator
 *-debug*
+
+/pages/try
