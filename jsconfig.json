@@ -6,7 +6,9 @@
       "@/pages/*": ["pages/*"],
       "@/public/*": ["public/*"],
       "@/firebase/*": ["firebase/*"],
-      "@/styles/*": ["styles/*"]
+      "@/styles/*": ["styles/*"],
+      "@/components/*": ["components/*"],
+      "@/assets/*": ["assets/*"]
     }
   }
 }
