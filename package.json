@@ -17,7 +17,6 @@
     "react-firebaseui": "5.0.2"
   },
   "devDependencies": {
-    "eslint": "8.39.0",
-    "eslint-config-next": "12.3.4"
+    "prettier": "2.8.7"
   }
 }
