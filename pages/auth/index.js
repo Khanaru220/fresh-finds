@@ -1,5 +1,7 @@
-import { firebase } from '../../firebase/clientApp.js';
+import { firebase } from '@/firebase/clientApp.js';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import RouteOnClient from '@/utils/RouteOnClient.js';
 
 // Source: https://github.com/firebase/firebaseui-web-react#using-styledfirebaseauth-with-a-redirect
 const uiConfig = {
@@ -20,11 +22,18 @@ const uiConfig = {
 };
 
 export default function Auth() {
-  return (
-    <div>
-      <h1>My App</h1>
-      <p>Please sign-in:</p>
-      <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
-    </div>
-  );
+  const [user, loading, error] = useAuthState(firebase.auth());
+
+  if (user) return <RouteOnClient path="/" />;
+  else
+    return (
+      <div>
+        <h1>My App</h1>
+        <p>Please sign-in:</p>
+        <StyledFirebaseAuth
+          uiConfig={uiConfig}
+          firebaseAuth={firebase.auth()}
+        />
+      </div>
+    );
 }
