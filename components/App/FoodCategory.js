@@ -26,8 +26,6 @@ export default function FoodCategory({ category }) {
                   return f.data()[category].includes(cate);
                 })
                 .map((f) => {
-                  console.log(f.id);
-                  console.log(f);
                   return <FoodFigure doc={f} key={f.id} />;
                 })}
             </div>
