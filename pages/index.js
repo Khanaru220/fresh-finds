@@ -9,6 +9,7 @@ import RouteOnClient from '@/utils/RouteOnClient';
 logForDev();
 
 export default function Home() {
+  // Docs: https://github.com/CSFrequency/react-firebase-hooks/tree/master/auth#useauthstate
   const [user, loading, error] = useAuthState(firebase.auth());
 
   return (
