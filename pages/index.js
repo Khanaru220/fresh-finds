@@ -2,10 +2,22 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import logForDev from '../utils/logForDev';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 logForDev();
 
 export default function Home() {
+  if (true)
+    return (
+      <div>
+        Let's{' '}
+        <Link href="/auth">
+          <span className="link">log in</span>
+        </Link>
+        , and join with us!
+      </div>
+    );
   return (
     <div className={styles.container}>
       <Head>
