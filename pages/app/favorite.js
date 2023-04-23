@@ -14,7 +14,7 @@ export default function favorite() {
   const [favFoods, setFavFoods] = useState(null);
 
   useEffect(() => {
-    if (user) {
+    if (user?.likedList) {
       setFavFoods(foods.filter((food) => user.likedList.includes(food.name)));
     }
   }, [user]);
