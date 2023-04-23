@@ -23,7 +23,7 @@ import { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import img1 from '/assets/1.png';
+// import img1 from '/assets/1.png';
 // import img2 from '/assets/2.png';
 // import img3 from '/assets/3.png';
 // import img4 from '/assets/4.png';
@@ -119,7 +119,7 @@ export default function FoodFigure({ food, iForImg }) {
             </div> */}
           <div className="w-40 gap-6 p-6 aspect-square relative bg-white rounded-lg flex justify-center items-center flex-col">
             <div className="flex items-center justify-center">
-              <Image src={img1} width="90rem" height="90rem" />
+              <img src={food.photoURL} width="90rem" height="90rem" />
             </div>
 
             <button
