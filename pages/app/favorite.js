@@ -76,11 +76,13 @@ export default function favorite() {
                     scope="row"
                     className="flex items-center px-6 py-2 text-gray-900  dark:text-white"
                   >
-                    <img
-                      className="w-10 h-10 rounded-full"
-                      src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.2vpXJK2P7s5N1WT-1OJKAwHaHa%26pid%3DApi&f=1&ipt=5c218ce594c2eadfc2427be45cec367e2aaa717b0733db7a265d7d64a6647642&ipo=images"
-                      alt={`image about ${food.name}`}
-                    />
+                    <div className="flex items-center justify-center">
+                      <img
+                        className="w-10 h-10 rounded-full text-sm"
+                        src={food.photoURL}
+                        alt={`<${food.name}>`}
+                      />
+                    </div>
                     <div className="pl-3">
                       <div className="text-base font-semibold">{food.name}</div>
                       {/* <div className="font-normal text-gray-500">
