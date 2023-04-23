@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import FoodFigure from '@/components/App/FoodFigure';
 import { useAppContext } from '@/context/useContext';
-import Spinner from '@/components/App/Spinner';
+import Spinner from '@/components/common/Spinner';
 import FoodCategory from '@/components/App/FoodCategory';
 
 export default function foods() {
