@@ -90,7 +90,7 @@ export default function FoodFigure({ food }) {
                   className="absolute top-3 right-3 flex items-center justify-center rounded-full bg-white p-2 text-brand-500 hover:cursor-pointer"
                 >
                   <div className="flex h-full w-full items-center justify-center rounded-full text-xl hover:bg-gray-50">
-                    <HeartIcon className="text-black w-5 h-5 icon-like" />
+                    <HeartIcon className="text-black w-4 h-4 icon-like" />
                   </div>
                 </button>
               </div>
@@ -106,7 +106,7 @@ export default function FoodFigure({ food }) {
                       .join(', ')}
                   </p>
                 </div>
-                <div className="flex flex-row-reverse md:mt-2 lg:mt-0">
+                {/* <div className="flex flex-row-reverse md:mt-2 lg:mt-0">
                   <span className="z-0 ml-px inline-flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-[#E0E5F2] text-xs text-navy-700 ">
                     +5
                   </span>
@@ -124,7 +124,7 @@ export default function FoodFigure({ food }) {
                       alt=""
                     />
                   </span>
-                </div>
+                </div> */}
               </div>
               <div className="flex items-center justify-between md:items-center lg:justify-between ">
                 <div className="flex">

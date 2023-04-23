@@ -24,7 +24,7 @@ export default function FoodCategory({ category }) {
           <div key={cate}>
             <h2 className="text-lg font-bold text-orange-500">{cate}</h2>
 
-            <div className="flex items-center gap-3 w-screen overflow-scroll">
+            <div className="flex items-baseline gap-3 w-screen overflow-scroll">
               {foods
                 .filter((food) => {
                   return food[category].includes(cate);
