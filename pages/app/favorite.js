@@ -23,7 +23,7 @@ export default function favorite() {
     <>
       {loading && <Spinner />}
       {favFoods && (
-        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <table className="translate-x-11 ml-40 overflow-scroll w-screen text-sm text-left text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="p-4">
@@ -74,7 +74,7 @@ export default function favorite() {
                   </td>
                   <th
                     scope="row"
-                    className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
+                    className="flex items-center px-6 py-2 text-gray-900  dark:text-white"
                   >
                     <img
                       className="w-10 h-10 rounded-full"
@@ -83,19 +83,19 @@ export default function favorite() {
                     />
                     <div className="pl-3">
                       <div className="text-base font-semibold">{food.name}</div>
-                      <div className="font-normal text-gray-500">
+                      {/* <div className="font-normal text-gray-500">
                         {food.types.join(', ')}
-                      </div>
+                      </div> */}
                     </div>
                   </th>
-                  <td className="px-6 py-4">{food.locations.join(', ')}</td>
-                  <td className="px-6 py-4">
+                  <td className="px-6 py-2">{food.locations.join(', ')}</td>
+                  <td className="px-6 py-2">
                     <div className="flex items-center">
                       <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>
                       {food.seasons.join(', ')}
                     </div>
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="px-6 py-2">
                     <a
                       href="#"
                       className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
@@ -109,7 +109,9 @@ export default function favorite() {
           </tbody>
         </table>
       )}
-      {!curAuth?.uid && <h2>You're not loggedin or didn't send hearts yet!</h2>}
+      {!curAuth?.uid && !favFoods?.length && (
+        <h2>You're not loggedin or didn't send hearts yet!</h2>
+      )}
     </>
   );
 }

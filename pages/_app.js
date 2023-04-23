@@ -4,9 +4,13 @@ import { AppWrapper } from '@/context/useContext';
 import '@/styles/globals.css';
 import styles from '@/styles/Home.module.css';
 import InitStates from '@/components/common/InitStates';
-import NavBarMobile from '@/components/common/NavBarMobile';
+import NavBarMobile from '@/components/Pages/NavBarMobile';
+import Header from '@/components/Pages/Header';
+import { useRouter } from 'next/router';
 
 const app = ({ Component, pageProps }) => {
+  const router = useRouter();
+  console.log(router.pathname);
   return (
     <>
       <Head>
@@ -18,10 +22,11 @@ const app = ({ Component, pageProps }) => {
       <AppWrapper>
         <InitStates />
         <div className={styles.container}>
+          <Header />
           <main className={styles.main}>
             <Component {...pageProps} />
           </main>
-          <footer className={styles.footer}>
+          {/* <footer className={styles.footer}>
             <a
               href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
               target="_blank"
@@ -37,8 +42,8 @@ const app = ({ Component, pageProps }) => {
                 />
               </span>
             </a>
-          </footer>
-          <NavBarMobile />
+          </footer> */}
+          {router.pathname !== '/auth' && <NavBarMobile />}
         </div>
       </AppWrapper>
     </>

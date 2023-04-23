@@ -1,9 +1,51 @@
 import { useRouter } from 'next/router';
+import { HomeIcon, HeartIcon, UserIcon } from '@heroicons/react/24/solid';
 
 export default function NavBarMobile() {
   const router = useRouter();
   return (
-    <div className="fixed bottom-0 right-0 z-50 w-full h-16 bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600">
+    <div className="fixed bottom-0 right-0 z-50 w-full bg-white">
+      <div className="grid h-full max-w-lg grid-cols-3 mx-auto">
+        <button
+          className={`${
+            router.pathname.includes('/app/foods')
+              ? 'border-t-4 border-t-[#006400]'
+              : ''
+          } pb-5 pt-2  flex justify-center active:text-red-500`}
+          type="button"
+          onClick={() => router.push('/app/foods')}
+        >
+          <HomeIcon className="h-5 w-5 " />
+        </button>
+        <button
+          className={`${
+            router.pathname.includes('/app/favorite')
+              ? 'border-t-4 border-t-[#006400]'
+              : ''
+          } pb-5 pt-2 flex justify-center active:text-red-500`}
+          type="button"
+          onClick={() => router.push('/app/favorite')}
+        >
+          <HeartIcon className="h-5 w-5" />
+        </button>
+        <button
+          className={`${
+            router.pathname.includes('/app/profile')
+              ? 'border-t-4 border-t-[#006400]'
+              : ''
+          } pb-5 pt-2  flex justify-center active:text-red-500`}
+          type="button"
+          onClick={() => router.push('/app/profile')}
+        >
+          <UserIcon className="h-5 w-5" />
+        </button>
+      </div>
+    </div>
+  );
+}
+
+{
+  /* <div className="fixed bottom-0 right-0 z-50 w-full h-16 bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600">
       <div className="grid h-full max-w-lg grid-cols-3 mx-auto">
         <button
           onClick={() => router.push('/')}
@@ -64,8 +106,5 @@ export default function NavBarMobile() {
           </span>
         </button>
       </div>
-    </div>
-    // <div className="w-full max-w-sm overflow-y-scroll bg-white border border-gray-100 rounded-lg dark:bg-gray-700 dark:border-gray-600 h-96">
-    // </div>
-  );
+    </div> */
 }

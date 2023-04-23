@@ -3,7 +3,7 @@ import { firebase } from '@/firebase/clientApp';
 import RouteOnClient from '@/utils/RouteOnClient';
 import Spinner from '@/components/common/Spinner';
 import Link from 'next/link';
-import NavBarMobile from '@/components/common/NavBarMobile';
+import NavBarMobile from '@/components/Pages/NavBarMobile';
 
 export default function Home() {
   // Docs: https://github.com/CSFrequency/react-firebase-hooks/tree/master/auth#useauthstate

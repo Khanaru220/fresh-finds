@@ -38,15 +38,22 @@ export default function Auth() {
   else if (user) return <RouteOnClient path="/" />;
   else
     return (
-      <div className="flex justify-center items-center w-screen h-screen flex-col">
-        <h1>
-          Join with us at <strong>Fresh Find</strong>
-        </h1>
-        <p>Please sign-in:</p>
-        <StyledFirebaseAuth
-          uiConfig={uiConfig}
-          firebaseAuth={firebase.auth()}
-        />
+      <div className="flex flex-col pt-14 pb-20 justify-between items-center w-screen h-screen">
+        <header className="text-center">
+          <h1 className="text-5xl font-bold text-[#006400] mb-2">
+            Fresh Finds
+          </h1>
+          <p className="text-sm font-semibold">
+            Sourced from your local farmers
+          </p>
+        </header>
+        <div>
+          {/* <p className="text-center text-sm">Join with us:</p> */}
+          <StyledFirebaseAuth
+            uiConfig={uiConfig}
+            firebaseAuth={firebase.auth()}
+          />
+        </div>
       </div>
     );
 }

@@ -21,16 +21,16 @@ export default function FoodCategory({ category }) {
       {foods?.length &&
         categories.length > 1 &&
         categories.slice(0, 10).map((cate) => (
-          <div key={cate}>
-            <h2 className="text-lg font-bold text-orange-500">{cate}</h2>
+          <div key={cate} className="ml-7 mb-5 our-shadow">
+            <h2 className="mb-2 text-lg font-bold">{cate}</h2>
 
             <div className="flex items-baseline gap-3 w-screen overflow-scroll">
               {foods
                 .filter((food) => {
                   return food[category].includes(cate);
                 })
-                .map((food) => {
-                  return <FoodFigure food={food} key={food.name} />;
+                .map((food, i) => {
+                  return <FoodFigure iForImg={i} food={food} key={food.name} />;
                 })}
             </div>
           </div>

@@ -2,6 +2,15 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-}
+  async redirects() {
+    return [
+      {
+        source: '/app',
+        destination: '/app/foods',
+        permanent: true
+      }
+    ];
+  }
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

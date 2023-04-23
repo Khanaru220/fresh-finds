@@ -5,6 +5,9 @@ import FoodFigure from '@/components/App/FoodFigure';
 import { useAppContext } from '@/context/useContext';
 import Spinner from '@/components/common/Spinner';
 import FoodCategory from '@/components/App/FoodCategory';
+import CategoryBar from '@/components/App/CategoryBar';
+import SearchBar from '@/components/App/SearchBar';
+import ButtonFilter from '@/components/common/ButtonFilter';
 
 export default function foods() {
   const [contextFoods, setFoods] = useAppContext().foods;
@@ -27,6 +30,11 @@ export default function foods() {
               return <FoodFigure doc={doc} key={doc.id} />;
             })}
           </div> */}
+          <CategoryBar />
+          <div className="w-full py-4 px-3 flex justify-between">
+            <SearchBar />
+            <ButtonFilter />
+          </div>
           <FoodCategory category={'types'} />
         </>
       )}
