@@ -1,6 +1,6 @@
 import { db } from '@/firebase/clientApp';
 import { useEffect } from 'react';
-import { useCollection } from 'react-firebase-hooks/firestore';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 import FoodFigure from '@/components/App/FoodFigure';
 import { useAppContext } from '@/context/useContext';
 import Spinner from '@/components/common/Spinner';
@@ -9,11 +9,11 @@ import FoodCategory from '@/components/App/FoodCategory';
 export default function foods() {
   const [contextFoods, setFoods] = useAppContext().foods;
   // Docs: https://github.com/CSFrequency/react-firebase-hooks/tree/master/auth#useauthstate
-  const [foods, loading, error] = useCollection(db.collection('food_mock'));
+  const [foods, loading, error] = useCollectionData(db.collection('food_mock'));
 
   useEffect(() => {
     if (foods) {
-      setFoods(foods.docs);
+      setFoods(foods);
     }
   }, [foods]);
   return (

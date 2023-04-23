@@ -9,24 +9,28 @@ export default function FoodCategory({ category }) {
 
   useEffect(() => {
     if (foods?.length) {
-      setCategories([...new Set(foods.map((f) => f.data()[category]).flat())]);
+      const foodsInCategory = [
+        ...new Set(foods.map((food) => food[category]).flat())
+      ];
+      setCategories(foodsInCategory);
     }
   }, [foods]);
 
   return (
     <>
-      {categories.length > 1 &&
+      {foods?.length &&
+        categories.length > 1 &&
         categories.slice(0, 10).map((cate) => (
           <div key={cate}>
             <h2 className="text-lg font-bold text-orange-500">{cate}</h2>
 
             <div className="flex items-center gap-3 w-screen overflow-scroll">
               {foods
-                .filter((f) => {
-                  return f.data()[category].includes(cate);
+                .filter((food) => {
+                  return food[category].includes(cate);
                 })
-                .map((f) => {
-                  return <FoodFigure doc={f} key={f.id} />;
+                .map((food) => {
+                  return <FoodFigure food={food} key={food.name} />;
                 })}
             </div>
           </div>
