@@ -4,6 +4,8 @@ import { AppWrapper } from '@/context/useContext';
 import '@/styles/globals.css';
 import styles from '@/styles/Home.module.css';
 import InitStates from '@/components/common/InitStates';
+import NavBarMobile from '@/components/common/NavBarMobile';
+
 const app = ({ Component, pageProps }) => {
   return (
     <>
@@ -36,6 +38,7 @@ const app = ({ Component, pageProps }) => {
               </span>
             </a>
           </footer>
+          <NavBarMobile />
         </div>
       </AppWrapper>
     </>
