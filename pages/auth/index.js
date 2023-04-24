@@ -26,11 +26,11 @@ const uiConfig = {
 
 export default function Auth() {
   const [user, loading, error] = useAuthState(firebase.auth());
-  const [curUser, setCurUser] = useAppContext().curUser;
+  const [curAuth, setCurAuth] = useAppContext().curAuth;
 
   useEffect(() => {
     if (user) {
-      setCurUser(user);
+      setCurAuth(user);
     }
   }, [user]);
 

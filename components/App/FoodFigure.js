@@ -16,6 +16,7 @@ import updateDocument from '@/utils/updateDocument';
 import {
   useCollection,
   useDocumentData,
+  useDocumentDataOnce,
   useDocument
 } from 'react-firebase-hooks/firestore';
 import { db } from '@/firebase/clientApp';
@@ -30,96 +31,62 @@ import Link from 'next/link';
 // import img5 from '/assets/5.png';
 // import img6 from '/assets/6.png';
 
-export default function FoodFigure({ food, iForImg }) {
-  const [curUser, setCurUser] = useAppContext().curUser;
-  // const [user, userLoading, userError] = useCollection(
-  //   db.collection('users_test'),
-  //   {
-  //     snapshotListenOptions: { includeMetadataChanges: true }
-  //   }
-  // );
-  const imgList = useRef([
-    'https://freepngdownload.com/image/bangladesh-apple-png.png',
-    'https://www.pngall.com/wp-content/uploads/2016/04/Banana-Free-Download-PNG-180x180.png',
-    'http://www.pngall.com/wp-content/uploads/2016/04/Tomato-PNG-Clipart-180x180.png',
-    'http://www.pngall.com/wp-content/uploads/2016/05/Corn-180x180.png',
-    'http://www.pngall.com/wp-content/uploads/2016/05/Strawberry-Download-PNG-180x180.png',
-    'https://pluspng.com/img-png/carrot-png-carrot-png-image-180.png'
-  ]);
-  const [user, loading, error] = useDocumentData(
-    db.doc(`users_test/${curUser.uid}`)
-  );
-  const iconSeason = useRef({
-    spring: '🌸',
-    summer: '☀️',
-    autumn: '🍁',
-    winter: '❄️'
+export default function FoodFigure({ food }) {
+  const [curUserData, setCurUserData] = useAppContext().curUserData;
+
+  const likedStyles = useRef({
+    default: ['text-[#FFA07A]'],
+    liked: ['fill-red-500', 'text-red-600']
   });
 
   const likeFood = useCallback((e) => {
-    const localLikedList = !user.likedList ? [] : user.likedList;
+    const localLikedList = !curUserData?.likedList ? [] : curUserData.likedList;
 
     const btnHeartLike = e.currentTarget.querySelector('.icon-like');
-    const likedStyles = ['fill-red-500', 'text-red-600'];
     // (TODO) need a logic state
 
-    if ([...btnHeartLike.classList].includes(likedStyles[0])) {
-      btnHeartLike.classList.remove(...likedStyles);
-      btnHeartLike.classList.add('text-[#FFA07A]'); // (TODO) find way to overwrite default styles
+    if ([...btnHeartLike.classList].includes(likedStyles.current.liked[0])) {
+      // unlike
+      btnHeartLike.classList.remove(...likedStyles.current.liked);
+      btnHeartLike.classList.add(''); // (TODO) find way to overwrite default styles
+      setCurUserData((current) => ({
+        ...current,
+        likedList: current.likedList.filter((f) => f !== food.name)
+      }));
       updateDocument({
         collection: 'users_test',
-        doc: curUser.uid,
-        data: { likedList: localLikedList.filter((l) => l === food.name) }
+        doc: curUserData.uid,
+        data: { likedList: localLikedList.filter((l) => l !== food.name) }
       });
-    } else {
-      btnHeartLike.classList.add(...likedStyles);
+    } else if (
+      [...btnHeartLike.classList].includes(likedStyles.current.default[0])
+    ) {
+      // like
+      btnHeartLike.classList.add(...likedStyles.current.liked);
       btnHeartLike.classList.remove('text-[#FFA07A]'); // (TODO) find way to overwrite default styles
+      setCurUserData((current) => {
+        const currentLikedList = !current.likedList ? [] : current.likedList;
+        return {
+          ...current,
+          likedList: [...new Set([...currentLikedList, food.name])]
+        };
+      });
       updateDocument({
         collection: 'users_test',
-        doc: curUser.uid,
+        doc: curUserData.uid,
         data: { likedList: [...new Set([...localLikedList, food.name])] }
       });
     }
   });
 
-  const createRandomUserImage = () => {
-    const gender = Math.round(Math.random()) === 0 ? 'men' : 'women';
-    const index = Math.round(Math.random() * 50);
-    return `https://randomuser.me/api/portraits/thumb/${gender}/${index}.jpg`;
-  };
-
   // Author: https://tailwindcomponents.com/u/vldmihalache
   return (
     <>
-      {!curUser?.uid && (
-        <h2>
-          Click here to
-          <Link href="/auth">
-            <button className="block font-bold bg-[#8B4513] text-white p-1 cursor-pointer">
-              LOG IN
-            </button>
-          </Link>
-        </h2>
-      )}
-      {curUser?.uid && (
+      {curUserData?.uid && (
         <div className="our-shadow">
-          {/* <div className="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
-              <a href="#!" data-te-ripple-init data-te-ripple-color="light">
-                <img
-                  className="rounded-t-lg"
-                  src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
-                  alt=""
-                />
-              </a>
-              <div className="p-6">
-                <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-                  Card title
-                </h5>
-              </div>
-            </div> */}
-          <div className="w-40 gap-6 p-6 aspect-square relative bg-white rounded-lg flex justify-center items-center flex-col">
+          <div className="h-48 gap-6 p-5 aspect-square relative bg-white rounded-lg flex justify-center items-center flex-col">
             <div className="flex items-center justify-center">
-              <img src={food.photoURL} width="90rem" height="90rem" />
+              <img src={food.photoURL} className="w-20 h-20 aspect-square" />
             </div>
 
             <button
@@ -127,7 +94,13 @@ export default function FoodFigure({ food, iForImg }) {
               className="absolute top-3 right-3  flex items-center justify-center rounded-full bg-white p-1 text-brand-500 hover:cursor-pointer"
             >
               <div className="  flex h-full w-full items-center justify-center rounded-full text-xl hover:bg-gray-50">
-                <HeartIcon className="text-[#FFA07A] w-5 h-5 icon-like" />
+                <HeartIcon
+                  className={`w-5 h-5 icon-like ${
+                    curUserData?.likedList?.includes(food.name)
+                      ? likedStyles.current.liked.join(' ')
+                      : likedStyles.current.default.join(' ')
+                  }`}
+                />
               </div>
             </button>
             {/* Source: https://tailwind-elements.com/docs/standard/components/cards/ */}
