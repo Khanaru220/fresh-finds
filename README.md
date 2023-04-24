@@ -2,7 +2,7 @@
 
 ![Alt logo](https://user-images.githubusercontent.com/74447462/234064032-fcb23678-831f-4155-b77b-f25a4f1f7d93.png)
 
-> 🌟 Use it online: https://climate-change-draft.vercel.app/ - more performance on mobile 📱
+> 🌟 Use it online: https://freshfinds.vercel.app - more performance on mobile 📱
 >
 > DevPost link: https://devpost.com/software/fresh-finds-wyiq5k
 
