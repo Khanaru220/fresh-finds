@@ -29,8 +29,7 @@ export default function InitStates() {
   useEffect(async () => {
     if (Object.keys(curUserData).length === 0 && !auth) return;
     const user = await db.doc(`users_test/${auth.uid}`).get();
-    console.log('request for `user`');
-    console.log(user.data());
+    console.log('Request: `user`');
     setCurUserData(user.data());
   }, [auth]);
 
