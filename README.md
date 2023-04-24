@@ -9,7 +9,7 @@
 ## Team members
 |Member|Field|
 |-|-|
-|[Ramiz Jan's](https://devpost.com/rjanl8r)|Product manager, research, product vision, wire framing, team management and communicating across the finish line|
+|[Ramiz Jan](https://devpost.com/rjanl8r)|Product manager, research, product vision, wire framing, team management and communicating across the finish line|
 |[Will Vo](https://devpost.com/willnguyenvo)|Figma design, Prototyping, & Style Guide|
 |[Khanaru](https://devpost.com/Khanaru220)|Dev frontend, setting up backend and database with Firebase|
 
