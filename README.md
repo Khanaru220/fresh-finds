@@ -1,4 +1,7 @@
-# Hackthon Climate Change with MLH and DevPost
+# A solution for ClimateHack
+
+![Alt logo](https://user-images.githubusercontent.com/74447462/234064032-fcb23678-831f-4155-b77b-f25a4f1f7d93.png)
+
 
 > 🌟 live-deploy: https://climate-change-draft.vercel.app/
 >
@@ -9,6 +12,9 @@
 ## Structure overview
 ![Frame 2(1)](https://user-images.githubusercontent.com/74447462/233838944-045473ab-e69d-4d8a-a8db-32a002171982.png)
 
+## Built in hackathon
+- Major League Hacking
+- DevPost
 
 ## Inspiration
 
