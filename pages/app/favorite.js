@@ -103,6 +103,7 @@ export default function favorite() {
                       alt={`<${food.name}>`}
                     />
                     <div className="pl-3 inline-block">
+
                       <div className="text-base font-semibold">{food.name}</div>
                       {/* <div className="font-normal text-gray-500">
 													{food.types.join(', ')}

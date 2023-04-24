@@ -1,34 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Hackthon Climate Change with MLH and DevPost
 
-## Getting Started
+> 🌟 live-deploy: https://climate-change-draft.vercel.app/
+>
+> More performance on mobile 📱
 
-First, run the development server:
+> DevPost link: https://devpost.com/software/fresh-finds-wyiq5k
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Structure overview
+![Frame 2(1)](https://user-images.githubusercontent.com/74447462/233838944-045473ab-e69d-4d8a-a8db-32a002171982.png)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Inspiration
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+The primary objective of this project was to discover methods for encouraging people to adopt greener lifestyles. By promoting the consumption of locally sourced foods, we can reduce the demand for imported goods, subsequently decreasing the carbon footprint associated with the transportation of these items over long distances.
+What it does
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## What it does
 
-## Learn More
+As a user, I can select my location and food preferences to receive recommendations for local foods available within my diet. This enables me to shop locally, lowering my carbon footprint and supporting sustainable practices.
+How we built it
 
-To learn more about Next.js, take a look at the following resources:
+## How we built it
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The app's design was conceptualized using Figma, and subsequently developed with Firebase, JavaScript, and React.
+Challenges we ran into
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Challenges we ran into
 
-## Deploy on Vercel
+Building this application presented several challenges. One significant obstacle was assembling the right team, with members possessing the necessary skills and time to commit to the project. Another challenge involved obtaining live data to support the app using an API, as there was insufficient time to find location data linked to specific foods.
+Accomplishments that we're proud of
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Accomplishments that we're proud of
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+We take pride in the app's visually appealing design and its meaningful and impactful concept. Once launched, we believe this app would be well-received by users. Additionally, the project's developer worked diligently to advance the project and is dedicated to finding a viable solution.
+What we learned
+
+## What we learned
+
+In future projects, we recognize that conducting thorough research and planning in advance will provide a more solid foundation for success.
+What's next for Fresh Finds
+
+## What's next for Fresh Finds
+
+Our team is committed to refining this solution and transforming the app into a fully functional product, making a positive impact on users and the environment.
+Built With
+
+## Built With
+
+css figma firebase html5 javascript react vercel
+
