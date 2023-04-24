@@ -10,7 +10,6 @@ import { useRouter } from 'next/router';
 
 const app = ({ Component, pageProps }) => {
   const router = useRouter();
-  console.log(router.pathname);
   return (
     <>
       <Head>

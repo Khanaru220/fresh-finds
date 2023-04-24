@@ -43,3 +43,7 @@ a {
 .our-shadow {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
+
+.no-flexbox-gap .food-row > *:not(:last-child) {
+  margin-right: 1rem;
+}
