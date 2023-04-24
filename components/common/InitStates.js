@@ -8,6 +8,7 @@ import {
   useCollectionDataOnce,
   useDocument
 } from 'react-firebase-hooks/firestore';
+import checkFlexGap from '@/utils/checkFlexGap';
 
 export default function InitStates() {
   const [auth, loading, error] = useAuthState(firebase.auth());
@@ -20,6 +21,10 @@ export default function InitStates() {
   // const [foods, foodLoading, foodError] = useCollectionDataOnce(
   //   contextFoods?.apple ? db.collection('food_mock') : ''
   // );
+
+  useEffect(() => {
+    checkFlexGap();
+  }, []);
 
   useEffect(async () => {
     if (Object.keys(curUserData).length === 0 && !auth) return;

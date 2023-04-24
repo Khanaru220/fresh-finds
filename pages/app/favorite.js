@@ -41,7 +41,7 @@ export default function favorite() {
       {(loading || favFoods === null) && <Spinner />}
       {!loading && !user && <h2>You're not logged in!</h2>}
       {!loading && user && favFoods && (
-        <table className="mt-8 mx-2 mb-96 overflow-scroll text-sm text-left text-gray-500 dark:text-gray-400">
+        <table className="ml-44 mt-8 mx-2 mb-96 overflow-scroll text-sm text-left text-gray-500 dark:text-gray-400">
           <thead className="text-xs rounded-t-lg text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="p-4">
@@ -98,7 +98,7 @@ export default function favorite() {
                     className="px-6 py-2 text-gray-900  dark:text-white w-1/3"
                   >
                     <img
-                      className="w-10 h-10 min-w-min rounded-full text-sm aspect-square"
+                      className="w-10 h-10 rounded-full text-sm aspect-square"
                       src={food.photoURL}
                       alt={`<${food.name}>`}
                     />

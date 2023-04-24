@@ -14,7 +14,7 @@ export default function CategoryBar() {
   const highlight = useRef(`border-b-4 border-b-[#006400] text-[#006400]`);
 
   return (
-    <div className="w-full bg-white">
+    <div className="w-screen bg-white">
       <div className="grid h-full max-w-lg grid-cols-4  mx-auto pt-2">
         <button
           className={`${

@@ -65,7 +65,7 @@ export default function FoodCategory({ category }) {
                 {capitalizeFirstLetter(subCategories.current[cate_i])}
               </h2>
 
-              <div className="flex items-baseline gap-4 w-screen overflow-scroll">
+              <div className="food-row flex items-baseline gap-4 w-screen overflow-scroll">
                 {randomList.current.food[subCategories.current[cate_i]].map(
                   (food_i) => {
                     return (

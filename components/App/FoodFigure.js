@@ -84,9 +84,9 @@ export default function FoodFigure({ food }) {
     <>
       {curUserData?.uid && (
         <div className="our-shadow">
-          <div className="h-48 gap-6 p-5 aspect-square relative bg-white rounded-lg flex justify-center items-center flex-col">
+          <div className="h-44 w-44 gap-6  p-5 aspect-square relative bg-white rounded-lg flex justify-center items-center flex-col">
             <div className="flex items-center justify-center">
-              <img src={food.photoURL} className="w-20 h-20 aspect-square" />
+              <img src={food.photoURL} className="w-4/5 h-4/5 aspect-square" />
             </div>
 
             <button
