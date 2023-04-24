@@ -3,28 +3,46 @@ import { db } from '@/firebase/clientApp';
 import { useEffect, useState, useRef } from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import Spinner from '@/components/common/Spinner';
-import { useDocumentData } from 'react-firebase-hooks/firestore';
+import {
+  useDocumentData,
+  useDocumentDataOnce
+} from 'react-firebase-hooks/firestore';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { firebase } from '@/firebase/clientApp';
+import capitalizeFirstLetter from '@/utils/capitalizeFirstLetter';
 
 export default function favorite() {
-  const [curAuth, setCurAuth] = useAppContext().curUser;
+  // const [curAuth, _loading, _error] = useAuthState(firebase.auth());
+
+  // const [curAuth, setCurAuth] = useAppContext().curAuth;
   const [foods, setFoods] = useAppContext().foods;
-  const [user, loading, error] = useDocumentData(
-    db.doc(`users_test/${curAuth.uid}`)
-  );
+  const [curUserData, setCurUserData] = useAppContext().curUserData;
+  const [user, loading, error] = useAuthState(firebase.auth());
   const [favFoods, setFavFoods] = useState(null);
 
-  useEffect(() => {
-    if (user?.likedList) {
-      setFavFoods(foods.filter((food) => user.likedList.includes(food.name)));
-    }
-  }, [user]);
+  const iconSeason = useRef({
+    spring: '🌸',
+    summer: '☀️',
+    autumn: '🍁',
+    winter: '❄️'
+  });
 
+  useEffect(() => {
+    if (curUserData?.likedList?.length > 0) {
+      setFavFoods(
+        foods.filter((food) => curUserData.likedList.includes(food.name))
+      );
+    } else if (curUserData && foods) {
+      setFavFoods(false);
+    }
+  }, [curUserData]);
   return (
     <>
-      {loading && <Spinner />}
-      {favFoods && (
-        <table className="translate-x-11 ml-40 overflow-scroll w-screen text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      {(loading || favFoods === null) && <Spinner />}
+      {!loading && !user && <h2>You're not logged in!</h2>}
+      {!loading && user && favFoods && (
+        <table className="mt-8 mx-2 mb-96 overflow-scroll text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead className="text-xs rounded-t-lg text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="p-4">
                 <div className="flex items-center">
@@ -40,6 +58,9 @@ export default function favorite() {
               </th>
               <th scope="col" className="px-6 py-3">
                 Name
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Diets
               </th>
               <th scope="col" className="px-6 py-3">
                 Locations
@@ -74,27 +95,39 @@ export default function favorite() {
                   </td>
                   <th
                     scope="row"
-                    className="flex items-center px-6 py-2 text-gray-900  dark:text-white"
+                    className="px-6 py-2 text-gray-900  dark:text-white w-1/3"
                   >
-                    <div className="flex items-center justify-center">
-                      <img
-                        className="w-10 h-10 rounded-full text-sm"
-                        src={food.photoURL}
-                        alt={`<${food.name}>`}
-                      />
-                    </div>
-                    <div className="pl-3">
+                    <img
+                      className="w-10 h-10 min-w-min rounded-full text-sm aspect-square"
+                      src={food.photoURL}
+                      alt={`<${food.name}>`}
+                    />
+                    <div className="pl-3 inline-block">
                       <div className="text-base font-semibold">{food.name}</div>
                       {/* <div className="font-normal text-gray-500">
-                        {food.types.join(', ')}
-                      </div> */}
+													{food.types.join(', ')}
+												</div> */}
                     </div>
                   </th>
-                  <td className="px-6 py-2">{food.locations.join(', ')}</td>
-                  <td className="px-6 py-2">
+                  <td className="px-6 py-2 text-sm w-1/6 whitespace-break-spaces">
+                    {food.diets.map((w) => capitalizeFirstLetter(w)).join(', ')}
+                  </td>
+                  <td className="px-6 py-2 text-sm w-1/5 whitespace-break-spaces">
+                    {food.locations.join(', ')}
+                  </td>
+                  <td className="py-2 w-1/3">
                     <div className="flex items-center">
-                      <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>
-                      {food.seasons.join(', ')}
+                      <div className="text-sm h-2 w-2 aspect-square rounded-full bg-green-500 mr-2"></div>
+                      <p className="">
+                        {food.seasons
+                          .map(
+                            (season) =>
+                              iconSeason.current[season] +
+                              capitalizeFirstLetter(season).slice(0, 4) +
+                              '.'
+                          )
+                          .join(', ')}
+                      </p>
                     </div>
                   </td>
                   <td className="px-6 py-2">
@@ -111,9 +144,8 @@ export default function favorite() {
           </tbody>
         </table>
       )}
-      {!curAuth?.uid && !favFoods?.length && (
-        <h2>You're not loggedin or didn't send hearts yet!</h2>
-      )}
+
+      {!loading && favFoods === false && <h2>Your list is empty!</h2>}
     </>
   );
 }

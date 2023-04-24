@@ -13,20 +13,29 @@ export default function NavBarMobile() {
               : ''
           } pb-5 pt-2  flex justify-center active:text-red-500`}
           type="button"
-          onClick={() => router.push('/app/foods')}
+          onClick={() => router.push('/app/foods/produce')}
         >
-          <HomeIcon className="h-5 w-5 " />
+          <HomeIcon
+            className={`${
+              router.pathname.includes('/app/foods') ? 'text-[#006400]' : ''
+            } h-5 w-5`}
+          />
         </button>
         <button
           className={`${
             router.pathname.includes('/app/favorite')
               ? 'border-t-4 border-t-[#006400]'
               : ''
+          }
           } pb-5 pt-2 flex justify-center active:text-red-500`}
           type="button"
           onClick={() => router.push('/app/favorite')}
         >
-          <HeartIcon className="h-5 w-5" />
+          <HeartIcon
+            className={`${
+              router.pathname.includes('/app/favorite') ? ' text-[#006400]' : ''
+            } h-5 w-5`}
+          />
         </button>
         <button
           className={`${
@@ -37,7 +46,11 @@ export default function NavBarMobile() {
           type="button"
           onClick={() => router.push('/app/profile')}
         >
-          <UserIcon className="h-5 w-5" />
+          <UserIcon
+            className={`${
+              router.pathname.includes('/app/profile') ? ' text-[#006400]' : ''
+            } h-5 w-5`}
+          />
         </button>
       </div>
     </div>
@@ -54,14 +67,14 @@ export default function NavBarMobile() {
         >
           <svg
             className="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
-            fill="currentColor"
+            text="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true"
           >
             <path
               clipRule="evenodd"
-              fillRule="evenodd"
+              textRule="evenodd"
               d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
             ></path>
           </svg>
@@ -76,7 +89,7 @@ export default function NavBarMobile() {
         >
           <svg
             className="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
-            fill="currentColor"
+            text="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true"
@@ -94,7 +107,7 @@ export default function NavBarMobile() {
         >
           <svg
             className="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
-            fill="currentColor"
+            text="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true"
